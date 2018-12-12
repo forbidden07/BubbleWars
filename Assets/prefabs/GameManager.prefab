@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1890046786011784}
+  m_IsPrefabAsset: 1
+--- !u!1 &1890046786011784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4355112711755826}
+  - component: {fileID: 114912651428926870}
+  - component: {fileID: 114076556790927686}
+  - component: {fileID: 114363589238353686}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4355112711755826
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1890046786011784}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 169.02303, y: -77.9934, z: 3.119841}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114076556790927686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1890046786011784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ced6e3c9f91b3343a4d1ae3ca1ee1d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114363589238353686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1890046786011784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289e29bbf2d65ad4ea8a2bb3dd950027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoulardPrefab: {fileID: 1721328971253292, guid: 425f4dea55ef851459a0d20822e336c2,
+    type: 2}
+  FlamerPrefab: {fileID: 1488895697562568, guid: 568877b0304612a438edfe7551471ac6,
+    type: 2}
+  BlindarPrefab: {fileID: 1721328971253292, guid: 467b2c5cb0f270d4bb7c3a897a6f16fa,
+    type: 2}
+  BoulozorPrefab: {fileID: 1771264285287654, guid: 514b548ba27fa9f4db3a1538453e5224,
+    type: 2}
+  Parent: {fileID: 0}
+--- !u!114 &114912651428926870
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1890046786011784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e478923544df41b42add52a537d6f1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MenuTurret: {fileID: 0}
+  SimpleTurret: {fileID: 1839998885920122, guid: e37ce4bb0e0b6f647b3ff10fd1c7e7bd,
+    type: 2}
+  AcideTurret: {fileID: 1371556460178086, guid: 1adad3197556cff4ba009ba17c5a18d1,
+    type: 2}
+  MortierTurret: {fileID: 1678745578364950, guid: 205724adcbf94974d9c484f658ba3f17,
+    type: 2}
+  FlamerTurret: {fileID: 1584176140632588, guid: b585d3288d6e36444933345c353d6ae6,
+    type: 2}
+  Depart: {fileID: 0}
+  tours: 0
+  NombreAPop: 0
+  BeginHPBase: 30
+  GameOver: {fileID: 0}
+  TextDamage: {fileID: 0}
+  textSpeed: {fileID: 0}
+  EndPanel: {fileID: 0}
