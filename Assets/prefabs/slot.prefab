@@ -23,8 +23,8 @@ GameObject:
   - component: {fileID: 23964015583116462}
   - component: {fileID: 65984777299121942}
   - component: {fileID: 114771860926294238}
-  - component: {fileID: 54292240676454936}
   - component: {fileID: 114895872864525596}
+  - component: {fileID: 54765865527540736}
   m_Layer: 0
   m_Name: slot
   m_TagString: Untagged
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1186218363339150}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 150, y: 0, z: -215}
+  m_LocalPosition: {x: 162, y: 0, z: -245}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children:
   - {fileID: 4139503324905090}
@@ -116,7 +116,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1186218363339150}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54292240676454936
+--- !u!54 &54765865527540736
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

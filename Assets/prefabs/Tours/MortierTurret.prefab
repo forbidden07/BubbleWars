@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 82164434216702886}
   - component: {fileID: 114881698550799250}
   - component: {fileID: 135366234198332014}
+  - component: {fileID: 114552705629631088}
   m_Layer: 0
   m_Name: MortierTurret
   m_TagString: Untagged
@@ -376,6 +377,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114552705629631088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678745578364950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 543bbe72f91fa334289e7ec8e22bb4a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firingAngle: 45
+  gravity: 200
+  nextposition: {x: 0, y: 0, z: 0}
+  ExplosionMortar: {fileID: 1377669198674958, guid: 8063cd5b14d3b2d4fb9354eb213a377f,
+    type: 2}
 --- !u!114 &114881698550799250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -387,8 +404,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7a6fbfb210bb94c9b309b0cbe007ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.2
-  range: 40
+  fireRate: 0.6
+  range: 60
   turnSpeed: 5
   damage: 25
   CaracTuretPanel: {fileID: 1292522437999422, guid: c12d069af3279ee4db803cdb3061dec4,
