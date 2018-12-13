@@ -72,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1599662871518582}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.3585236, y: -0.36999997, z: 22.085651}
+  m_LocalPosition: {x: 0, y: 0, z: 0.632}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 4489615029794242}
@@ -85,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1771264285287654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 252.41476, y: 4.2, z: -269.8565}
+  m_LocalPosition: {x: 166.29164, y: 5.4, z: -330.37958}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 4234252460353410}
@@ -176,7 +176,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slowable: 0
   slowed: 0
-  Ignite: 0
   _enemyHP: 0
   EnemyHPMax: 10000
   EnnemyVitesse: 5
