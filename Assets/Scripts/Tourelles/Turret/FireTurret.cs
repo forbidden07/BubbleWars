@@ -22,8 +22,8 @@ public class FireTurret : TurretBase
     }
     public override void Shoot()
     {
-       // GetComponent<AudioSource>().Play();
-       GameObject FireParticles = Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
+        GetComponent<AudioSource>().Play();
+        GameObject FireParticles = Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
         FireParticles.transform.SetParent(FirePoint);
         FireParticles.transform.localRotation = new Quaternion(0, 180, 0, 0);
         Destroy(FireParticles,0.5f);
