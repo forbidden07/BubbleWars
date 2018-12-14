@@ -129,9 +129,9 @@ public class GameManager : MonoBehaviour
     {
         if (SelectedTurret)
         {
-            MenuTurret.transform.position = Camera.main.WorldToScreenPoint(SelectedTurret.transform.position);
-            TextDamage.text = SelectedTurret.GetComponent<TurretBase>().damage.ToString();
-            textSpeed.text = SelectedTurret.GetComponent<TurretBase>().fireRate.ToString();
+            //MenuTurret.transform.position = Camera.main.WorldToScreenPoint(SelectedTurret.transform.position);
+            //TextDamage.text = SelectedTurret.GetComponent<TurretBase>().damage.ToString();
+           // textSpeed.text = SelectedTurret.GetComponent<TurretBase>().fireRate.ToString();
             MenuTurret.SetActive(MenuturretIsVisible);
             if (MenuturretIsVisible)
             {

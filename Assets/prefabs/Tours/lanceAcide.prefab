@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.5
-  range: 15
+  range: 20
   turnSpeed: 7.5
   damage: 1
   CaracTuretPanel: {fileID: 1292522437999422, guid: c12d069af3279ee4db803cdb3061dec4,
@@ -336,7 +336,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1370599837736064, guid: 655e08a0a57d7a6499e31aff0c5e06e5,
     type: 2}
   PartToRotate: {fileID: 4663452112081184}
-  slowPropertion: 0.2
+  slowPropertion: 0.8
 --- !u!135 &135997329488859620
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -188,10 +188,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slowable: 0
   slowed: 0
-  Ignite: 0
   _enemyHP: 30
   EnemyHPMax: 30
-  EnnemyVitesse: 20
+  EnnemyVitesse: 15
   slowTimer: 0
   earningsOnDestroy: 1
   LifeBarPrefab: {fileID: 1577246104111378, guid: 0aaed781e9770594a9889373dd89a04f,

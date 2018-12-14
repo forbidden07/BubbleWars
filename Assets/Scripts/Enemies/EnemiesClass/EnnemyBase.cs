@@ -101,9 +101,7 @@ public abstract class EnnemyBase : MonoBehaviour
             int i = 0;
             while (i < 4)
             {
-                Debug.Log($"before i = {i}");
                 yield return new WaitForSeconds(1);
-                Debug.Log($"after i = {i}");
                 EnemyHP -= 5;
                 i++;
             }

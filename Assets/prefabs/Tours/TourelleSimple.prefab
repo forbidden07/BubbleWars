@@ -363,7 +363,7 @@ MonoBehaviour:
   fireRate: 0.8
   range: 20
   turnSpeed: 7.5
-  damage: 30
+  damage: 20
   CaracTuretPanel: {fileID: 1292522437999422, guid: c12d069af3279ee4db803cdb3061dec4,
     type: 2}
   bulletPrefab: {fileID: 1860272652170242, guid: 7b07b953e0da2324ca95dd848c19a4c7,
