@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
     //Controle of the Camera.
     private void CameraControle()
     {
+        #region ZQSD
         if (Input.GetKey(KeyCode.Z))
         {
             Camera.main.transform.position += new Vector3(0, 0, 70 * Time.deltaTime);
@@ -107,11 +108,54 @@ public class GameManager : MonoBehaviour
         {
             Camera.main.transform.position += new Vector3(70 * Time.deltaTime, 0, 0);
         }
+        #endregion
+
+        #region Zoom
+        if (Camera.main.transform.position.y < 15)
+        {
+            if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+            {
+                Camera.main.transform.localPosition += (Vector3.up + Vector3.back) * 3;
+            }
+        }
+        else
+        {
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+            {
+                Camera.main.transform.localPosition -= (Vector3.up + Vector3.back) * 3;
+            }
+        }
+        if (Camera.main.transform.position.y > 55)
+        {
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+            {
+                Camera.main.transform.localPosition -= (Vector3.up + Vector3.back) * 3;
+            }
+        }
+        else
+        {
+            if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+            {
+                Camera.main.transform.localPosition += (Vector3.up + Vector3.back) * 3;
+            }
+        }
+        #endregion
+
+        #region TurnCamera
+        if (Input.GetMouseButtonDown(0))
+        {
+            Transform c = Camera.main.transform;
+            c.rotation = Quaternion.Euler(40, Input.GetAxis("Mouse X") * 10, 0);
+            //c.Rotate(-Input.GetAxis("Mouse Y") * 10, 0, 0);
+            //c.Rotate(0, 0, -Input.GetAxis("QandE") * 90 * Time.deltaTime);
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        #endregion
     }
     #endregion
 
     #region Methode UI
-    public void  Victory(bool winOrLose)
+    public void Victory(bool winOrLose)
     {
         EndPanel.SetActive(true);
         if (winOrLose)
@@ -131,7 +175,7 @@ public class GameManager : MonoBehaviour
         {
             //MenuTurret.transform.position = Camera.main.WorldToScreenPoint(SelectedTurret.transform.position);
             //TextDamage.text = SelectedTurret.GetComponent<TurretBase>().damage.ToString();
-           // textSpeed.text = SelectedTurret.GetComponent<TurretBase>().fireRate.ToString();
+            // textSpeed.text = SelectedTurret.GetComponent<TurretBase>().fireRate.ToString();
             MenuTurret.SetActive(MenuturretIsVisible);
             if (MenuturretIsVisible)
             {
