@@ -91,22 +91,23 @@ public class GameManager : MonoBehaviour
     //Controle of the Camera.
     private void CameraControle()
     {
+        Transform cameraPosition = Camera.main.transform.parent.transform;
         #region ZQSD
         if (Input.GetKey(KeyCode.Z))
         {
-            Camera.main.transform.position += new Vector3(0, 0, 70 * Time.deltaTime);
+            cameraPosition.Translate(0, 0, 70 * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            Camera.main.transform.position += new Vector3(0, 0, -70 * Time.deltaTime);
+            cameraPosition.Translate(0, 0, -70 * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.Q))
         {
-            Camera.main.transform.position += new Vector3(-70 * Time.deltaTime, 0, 0);
+            cameraPosition.Translate(-70 * Time.deltaTime, 0, 0);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            Camera.main.transform.position += new Vector3(70 * Time.deltaTime, 0, 0);
+            cameraPosition.Translate(70 * Time.deltaTime, 0, 0);
         }
         #endregion
 
@@ -125,6 +126,7 @@ public class GameManager : MonoBehaviour
                 Camera.main.transform.localPosition -= (Vector3.up + Vector3.back) * 3;
             }
         }
+
         if (Camera.main.transform.position.y > 55)
         {
             if (Input.GetAxis("Mouse ScrollWheel") > 0f)
@@ -142,13 +144,13 @@ public class GameManager : MonoBehaviour
         #endregion
 
         #region TurnCamera
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(1))
         {
-            Transform c = Camera.main.transform;
-            c.rotation = Quaternion.Euler(40, Input.GetAxis("Mouse X") * 10, 0);
-            //c.Rotate(-Input.GetAxis("Mouse Y") * 10, 0, 0);
-            //c.Rotate(0, 0, -Input.GetAxis("QandE") * 90 * Time.deltaTime);
+            cameraPosition.transform.Rotate(0, Input.GetAxis("Mouse X") * 50 * Time.deltaTime,0);
             Cursor.lockState = CursorLockMode.Locked;
+        }else
+        {
+            Cursor.lockState = CursorLockMode.None;
         }
         #endregion
     }
@@ -173,9 +175,9 @@ public class GameManager : MonoBehaviour
     {
         if (SelectedTurret)
         {
-            //MenuTurret.transform.position = Camera.main.WorldToScreenPoint(SelectedTurret.transform.position);
-            //TextDamage.text = SelectedTurret.GetComponent<TurretBase>().damage.ToString();
-            // textSpeed.text = SelectedTurret.GetComponent<TurretBase>().fireRate.ToString();
+            MenuTurret.transform.position = Camera.main.WorldToScreenPoint(SelectedTurret.transform.position);
+            TextDamage.text = SelectedTurret.GetComponent<TurretBase>().damage.ToString();
+            textSpeed.text = SelectedTurret.GetComponent<TurretBase>().fireRate.ToString();
             MenuTurret.SetActive(MenuturretIsVisible);
             if (MenuturretIsVisible)
             {
