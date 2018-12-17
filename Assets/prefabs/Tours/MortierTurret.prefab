@@ -404,6 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7a6fbfb210bb94c9b309b0cbe007ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PriceTurret: 20
   fireRate: 0.4
   range: 50
   turnSpeed: 5

@@ -8,6 +8,7 @@ public abstract class TurretBase : MonoBehaviour
     private GameObject PanelInstance;
     protected Transform target;
     private bool ToolTipTurretActive;
+    
 
     private GameObject Canvas { get { return GameObject.Find("Canvas"); } }
     protected Transform FirePoint
@@ -68,14 +69,7 @@ public abstract class TurretBase : MonoBehaviour
     }
     protected virtual void OnMouseDown()
     {
-        if (!EventSystem.current.IsPointerOverGameObject())
-        {
-            GameManager.SelectedTurret = gameObject;
-            if (!GameManager.MenuturretIsVisible)
-            {
-                GameManager.MenuturretIsVisible = true;
-            }
-        }
+        //ICI montrer la porter de la tour
     }
     #endregion
 

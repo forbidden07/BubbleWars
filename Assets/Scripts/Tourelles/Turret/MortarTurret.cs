@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MortarTurret : TurretBase {
-
+public class MortarTurret : TurretBase
+{
+    
     protected override void Start()
     {
         base.Start();

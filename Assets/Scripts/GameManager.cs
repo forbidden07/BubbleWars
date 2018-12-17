@@ -13,23 +13,23 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region propriété GameObject/Transform
-    public static GameObject TurretOnBuy;
+    // public static GameObject TurretOnBuy;
     public static GameObject slotSelect;
-    public static GameObject SelectedTurret;
-    public GameObject MenuTurret;
     public GameObject SimpleTurret;
     public GameObject AcideTurret;
     public GameObject MortierTurret;
     public GameObject FlamerTurret;
     public Transform Depart;
+    public GameObject MenuBuyTurret;
+    public GameObject SearchPanel;
     #endregion
 
     #region propriété Integer
-    public static int TurretPrice
-    {
-        get { return TurretOnBuy.GetComponent<TurretBase>().TurretPrice; }
-        set { TurretOnBuy.GetComponent<TurretBase>().TurretPrice = value; }
-    }
+    // public static int TurretPrice
+    //{
+    //get { return TurretOnBuy.GetComponent<TurretBase>().TurretPrice; }
+    // set { TurretOnBuy.GetComponent<TurretBase>().TurretPrice = value; }
+    //}
     public static int Money
     {
         get
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         set
         {
             _money = value;
-            ArgentText.text = $"Argent: {value}";
+            ArgentText.text = $"{value}";
         }
     }
     public static int HpBase
@@ -51,40 +51,45 @@ public class GameManager : MonoBehaviour
         set
         {
             _hpBase = value;
-            HPbaseText.text = $"PV: {value}";
+            HPbaseText.text = $"{value}";
         }
     }
+    public int MoneyBegin;
     public int tours = 1;
     public int NombreAPop;
     public int BeginHPBase;
     #endregion
 
     #region propriété Bool
-    public static bool MenuturretIsVisible = false;
+
     #endregion
 
     #region propriété UI
     public static Text ArgentText { get { return GameObject.Find("TextArgent").GetComponent<Text>(); } }
     public static Text HPbaseText { get { return GameObject.Find("TextVieBase").GetComponent<Text>(); } }
-    public Text GameOver;
-    public Text TextDamage;
-    public Text textSpeed;
     public GameObject EndPanel;
     #endregion
 
     private void Start()
     {
         HpBase = BeginHPBase;
-        Money = 60;
+        Money = MoneyBegin;
     }
     private void Update()
     {
         CameraControle();
-        GestionTextUI();
-        if (HpBase <= 0 || Input.GetKeyDown(KeyCode.A))
+        if (HpBase <= 0)
         {
             Victory(false);
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (MenuBuyTurret.activeSelf == true)
+            {
+                MenuBuyTurret.SetActive(false);
+            }
+        }
+        MenuTurretBuy();
     }
 
     #region Methode Controle
@@ -92,6 +97,7 @@ public class GameManager : MonoBehaviour
     private void CameraControle()
     {
         Transform cameraPosition = Camera.main.transform.parent.transform;
+
         #region ZQSD
         if (Input.GetKey(KeyCode.Z))
         {
@@ -144,11 +150,12 @@ public class GameManager : MonoBehaviour
         #endregion
 
         #region TurnCamera
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(2))
         {
-            cameraPosition.transform.Rotate(0, Input.GetAxis("Mouse X") * 50 * Time.deltaTime,0);
+            cameraPosition.transform.Rotate(0, Input.GetAxis("Mouse X") * 50 * Time.deltaTime, 0);
             Cursor.lockState = CursorLockMode.Locked;
-        }else
+        }
+        else
         {
             Cursor.lockState = CursorLockMode.None;
         }
@@ -171,22 +178,11 @@ public class GameManager : MonoBehaviour
             //lose
         }
     }
-    public void GestionTextUI()
+    public void MenuTurretBuy()
     {
-        if (SelectedTurret)
+        if (slotSelect)
         {
-            MenuTurret.transform.position = Camera.main.WorldToScreenPoint(SelectedTurret.transform.position);
-            TextDamage.text = SelectedTurret.GetComponent<TurretBase>().damage.ToString();
-            textSpeed.text = SelectedTurret.GetComponent<TurretBase>().fireRate.ToString();
-            MenuTurret.SetActive(MenuturretIsVisible);
-            if (MenuturretIsVisible)
-            {
-                MenuTurret.transform.position = Camera.main.WorldToScreenPoint(SelectedTurret.transform.position);
-            }
-            else
-            {
-                MenuTurret.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
-            }
+            slotSelect.GetComponent<SlotSelection>().MenuBuyTurret.transform.position = Camera.main.WorldToScreenPoint(slotSelect.transform.position) + new Vector3(0, 55, 0);
         }
     }
     #endregion
@@ -195,39 +191,46 @@ public class GameManager : MonoBehaviour
     // choice of turret.
     public void ChoixTurretSimple()
     {
-        TurretOnBuy = SimpleTurret;
-        TurretPrice = 8;
+        if (Money >= 8 && slotSelect.GetComponent<SlotSelection>().HasTurret == false)
+        {
+            GameObject turret = Instantiate(SimpleTurret, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.position, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.rotation);
+            Money -= 8;
+            AudioManager.myTurrets.Add(turret);
+            slotSelect.GetComponent<SlotSelection>().HasTurret = true;
+            MenuBuyTurret.SetActive(false);
+        }
     }
     public void ChoixTurretAcide()
     {
-        TurretOnBuy = AcideTurret;
-        TurretPrice = 20;
+        if (Money >= 15 && slotSelect.GetComponent<SlotSelection>().HasTurret == false)
+        {
+            GameObject turret = Instantiate(AcideTurret, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.position, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.rotation);
+            Money -= 15;
+            AudioManager.myTurrets.Add(turret);
+            slotSelect.GetComponent<SlotSelection>().HasTurret = true;
+            MenuBuyTurret.SetActive(false);
+        }
     }
     public void ChoixTurretMortier()
     {
-        TurretOnBuy = MortierTurret;
-        TurretPrice = 20;
+        if (Money >= 20 && slotSelect.GetComponent<SlotSelection>().HasTurret == false)
+        {
+            GameObject turret = Instantiate(MortierTurret, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.position, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.rotation);
+            Money -= 20;
+            AudioManager.myTurrets.Add(turret);
+            slotSelect.GetComponent<SlotSelection>().HasTurret = true;
+            MenuBuyTurret.SetActive(false);
+        }
     }
     public void ChoixTurretFlamer()
     {
-        TurretOnBuy = FlamerTurret;
-        TurretPrice = 15;
-    }
-    //Turret enhancement.
-    public void UpgradeDamageAttack()
-    {
-        if (EventSystem.current.IsPointerOverGameObject() && Money >= 5)
+        if (Money >= 15 && slotSelect.GetComponent<SlotSelection>().HasTurret == false)
         {
-            SelectedTurret.GetComponent<TurretBase>().damage += 15;
-            Money -= 5;
-        }
-    }
-    public void UpgradeSpeedAttaque()
-    {
-        if (EventSystem.current.IsPointerOverGameObject() && Money >= 5)
-        {
-            SelectedTurret.GetComponent<TurretBase>().fireRate += 0.10f;
-            Money -= 5;
+            GameObject turret = Instantiate(FlamerTurret, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.position, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.rotation);
+            Money -= 15;
+            AudioManager.myTurrets.Add(turret);
+            slotSelect.GetComponent<SlotSelection>().HasTurret = true;
+            MenuBuyTurret.SetActive(false);
         }
     }
     //management Open Menu.
@@ -251,6 +254,11 @@ public class GameManager : MonoBehaviour
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         SceneManager.LoadScene(CurrentSceneName, LoadSceneMode.Single);
         //ajoute les sous si win et relance la meme scene
+    }
+    public void OpenCloseSearchPanel()
+    {
+        if (SearchPanel.activeInHierarchy) { SearchPanel.SetActive(false); }
+        else { SearchPanel.SetActive(true); }
     }
     #endregion
 
