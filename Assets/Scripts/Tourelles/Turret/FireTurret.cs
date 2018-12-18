@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Nalka.Tools.Unity;
 
 public class FireTurret : TurretBase
 {

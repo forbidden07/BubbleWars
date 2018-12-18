@@ -1,5 +1,4 @@
-﻿using Nalka.Tools.Unity;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -53,7 +52,6 @@ public abstract class EnnemyBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        Destroyer.Destroyed.AddHandler<GameObject>(FreeEnemy);
         canvas = GameObject.Find("Canvas");
         LifeBar = Instantiate(LifeBarPrefab);
         LifeBar.transform.SetParent(canvas.transform);
@@ -63,22 +61,6 @@ public abstract class EnnemyBase : MonoBehaviour
     protected virtual void Update()
     {
         HealhBarManagment();
-    }
-    private void FreeEnemy(ObjectDestroyedEventArgs<GameObject> e)
-    {
-        foreach (GameObject item in e.DestroyedObject.transform.GetComponentInParent<AcideManagment>().slowEnemys)
-        {
-            if (item != null)
-            {
-                item.GetComponent<NavMeshAgent>().speed = item.GetComponent<EnnemyBase>().EnnemyVitesse;
-                slowed = false;
-            }
-            else
-            {
-                e.DestroyedObject.transform.GetComponentInParent<AcideManagment>().slowEnemys.Remove(item);
-                slowed = true;
-            }
-        }
     }
 
     protected void HealhBarManagment()
@@ -92,6 +74,7 @@ public abstract class EnnemyBase : MonoBehaviour
         }
     }
 
+    //public IEnumerator
     public IEnumerator IgniteManagement()
     {
         if (Ignited)

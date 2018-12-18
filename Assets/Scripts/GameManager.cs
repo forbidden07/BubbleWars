@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         HpBase = BeginHPBase;
-        Money = MoneyBegin;
+        Money = MoneyBegin; 
     }
     private void Update()
     {

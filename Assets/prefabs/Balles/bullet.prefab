@@ -95,10 +95,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e53eae0069d26b4ba4da161bd358c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   speed: 70
   impactEffect: {fileID: 1518363504624638, guid: c668b4653fc3699408f6156526f786c4,
     type: 2}
   NoTouch: {fileID: 0}
   damage: 0
-  lifeTime: 1000
+  damageDone: 0
+  lifeTime: 1
   slowAcide: 0
+  BalleParticule: {fileID: 0}
+  Particule: {fileID: 0}
