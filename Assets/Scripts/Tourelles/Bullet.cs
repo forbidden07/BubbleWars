@@ -59,10 +59,9 @@ public class Bullet : MonoBehaviour
         {
             target.GetComponent<EnnemyBase>().EnemyHP -= damage;
             GameObject particle = Instantiate(impactEffect, transform.position, new Quaternion(0, 0, 0, 0));
-            //particle.transform.SetParent(GameObject.Find("Acides").transform);
+            particle.GetComponent<ParticuleAcideTrain>().target = target.gameObject;
             Destroy(gameObject);
             Destroy(particle, lifeTime);
-            //Destroyer.Destroyed.AddHandler<Object>(e => Debug.Log("salut"));
             if (BalleParticule)
             {
                 Destroy(Particule, 0.5f);

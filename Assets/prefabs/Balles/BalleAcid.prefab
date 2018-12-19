@@ -569,18 +569,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e53eae0069d26b4ba4da161bd358c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   speed: 100
-  impactEffect: {fileID: 1211252268334772, guid: 2987187dd0c5fbc4b933256aafa1f84d,
+  impactEffect: {fileID: 1958581874381100, guid: 228c7f0a21e0e534eb31eac6e3e91eac,
     type: 2}
   NoTouch: {fileID: 1211252268334772, guid: 2987187dd0c5fbc4b933256aafa1f84d, type: 2}
   damage: 0
-  damageDone: 0
-  lifeTime: 1
+  lifeTime: 3
   slowAcide: 0
   BalleParticule: {fileID: 1705460837740678, guid: 58836b42620a7a948af75904160a1132,
     type: 2}
-  Particule: {fileID: 0}
 --- !u!135 &135278877790546522
 SphereCollider:
   m_ObjectHideFlags: 1
