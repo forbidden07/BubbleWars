@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ParticuleAcideTrain : MonoBehaviour
 {
-
     public GameObject target;
 
     private void Start()

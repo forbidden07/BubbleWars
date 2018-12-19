@@ -1,18 +1,15 @@
 ﻿using UnityEngine;
-public class Bullet : MonoBehaviour
+public class BulletBase : MonoBehaviour
 {
-    private Transform target;
-    public float speed = 10f;
-    public GameObject impactEffect;
-    public GameObject NoTouch;
-    public int damage;
-    private bool damageDone = false;
+    [HideInInspector] public Transform target;
+    [HideInInspector] public float speed = 10f;
+    [HideInInspector] public GameObject NoTouch;
+    [HideInInspector] public bool damageDone = false;
     public int lifeTime;
-    public float slowAcide;
     public GameObject BalleParticule;
     private GameObject Particule;
 
-    public void Start()
+    public virtual void Start()
     {
         if (BalleParticule != null)
         {
@@ -24,7 +21,12 @@ public class Bullet : MonoBehaviour
         target = _target;
     }
     
-    private void Update()
+    public virtual void Update()
+    {
+        ChooseAndHit();
+    }
+    
+    public void ChooseAndHit()
     {
         if (Particule != null)
         {
@@ -52,14 +54,11 @@ public class Bullet : MonoBehaviour
         }
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
     }
-    
-    private void HitTarget()
+    public virtual void HitTarget()
     {
         if (!damageDone)
         {
-            target.GetComponent<EnnemyBase>().EnemyHP -= damage;
-            GameObject particle = Instantiate(impactEffect, transform.position, new Quaternion(0, 0, 0, 0));
-            particle.GetComponent<ParticuleAcideTrain>().target = target.gameObject;
+           
             Destroy(gameObject);
             Destroy(particle, lifeTime);
             if (BalleParticule)
