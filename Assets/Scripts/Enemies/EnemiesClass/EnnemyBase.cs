@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Nalka.Tools.Unity;
 using UnityEngine.AI;
+using System;
 
 public abstract class EnnemyBase : MonoBehaviour
 {
@@ -52,11 +54,17 @@ public abstract class EnnemyBase : MonoBehaviour
 
     protected virtual void Start()
     {
+        //Destroyer.Destroyed.AddHandler<EnnemyBase>(InstantiateOnDestroy);
         canvas = GameObject.Find("Canvas");
         LifeBar = Instantiate(LifeBarPrefab);
         LifeBar.transform.SetParent(canvas.transform);
         EnemyHP = EnemyHPMax;
     }
+
+    //private void InstantiateOnDestroy(ObjectDestroyedEventArgs<EnnemyBase> obj)
+    //{
+    //    Destroyer.Destroy(Instantiate(DyingParticule, transform.position, transform.rotation), 1);
+    //}
 
     protected virtual void Update()
     {
@@ -70,7 +78,8 @@ public abstract class EnnemyBase : MonoBehaviour
         {
             GameManager.Money += earningsOnDestroy;
             Destroy(LifeBar);
-            Outils.Destroyed(gameObject, DyingParticule, 0f);
+            Outils.Destroyed(gameObject, DyingParticule, 1f);
+           // Destroyer.Destroy(gameObject);
         }
     }
 

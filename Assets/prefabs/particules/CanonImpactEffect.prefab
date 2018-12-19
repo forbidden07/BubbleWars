@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198431078130886856}
   - component: {fileID: 199912923734209206}
   m_Layer: 5
-  m_Name: BulletImpactEffect
+  m_Name: CanonImpactEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
