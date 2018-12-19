@@ -2,26 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AcideBullet : BulletBase {
-
-
+public class AcideBullet : BulletBase
+{
+    public GameObject PrefabTraineeAcide;
+    private GameObject particleTraineeAcide;
+    public GameObject PrefabBalleParticule;
+    private GameObject BalleParticule;
     public float slowAcide;
-    // Use this for initialization
-    public override void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	public override void  Update () {
-		
-	}
+    public override void Start()
+    {
+        base.Start();
+        if (PrefabBalleParticule != null)
+        {
+            BalleParticule = Instantiate(PrefabBalleParticule, transform.position, transform.rotation);
+        }
+    }
+
+    public override void Update()
+    {
+        base.Update();
+    }
     public override void HitTarget()
     {
-        base.HitTarget();
         if (!damageDone)
         {
-            particle.GetComponent<ParticuleAcideTrain>().target = target.gameObject;
-            Destroy(particle, lifeTime);
+            if (PrefabBalleParticule)
+            {
+                Destroy(BalleParticule, 0.5f);
+            }
+            if (PrefabTraineeAcide != null)
+            {
+                particleTraineeAcide = Instantiate(PrefabTraineeAcide, target.transform.position, target.transform.rotation);
+            }
+            particleTraineeAcide.GetComponent<ParticuleAcideTrain>().target = target.gameObject;
+            Destroy(particleTraineeAcide, lifeTime);
         }
+        base.HitTarget();
+    }
+    public override void ChooseAndHit()
+    {
+        BalleParticule.transform.position = transform.position;
+        base.ChooseAndHit();
     }
 }

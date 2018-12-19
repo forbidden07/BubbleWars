@@ -11,9 +11,11 @@ public class ParticuleAcideTrain : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        transform.position = target.transform.position;
+        if (target)
+        {
+            transform.position = target.transform.position;
+        }
     }
 }

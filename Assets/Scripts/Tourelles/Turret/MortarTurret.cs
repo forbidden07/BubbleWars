@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MortarTurret : TurretBase
 {
-    
     protected override void Start()
     {
         base.Start();

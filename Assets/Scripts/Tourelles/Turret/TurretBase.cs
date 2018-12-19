@@ -96,7 +96,7 @@ public abstract class TurretBase : MonoBehaviour
     {
         GetComponent<AudioSource>().Play();
         GameObject bulletGO = Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
+        BulletBase bullet = bulletGO.GetComponent<BulletBase>();
         bullet.damage = damage;
         bullet.Seek(target);
     }

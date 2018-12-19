@@ -1,20 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Mathf;
 using UnityEngine.AI;
-using System;
+using static UnityEngine.Mathf;
 
 public class MortarBullet : MonoBehaviour
 {
-    public float firingAngle = 10.0f;
-    public float gravity = 5f;
+    public float firingAngle = 10;
+    public float gravity = 5;
     public Vector3 nextposition;
     public GameObject ExplosionMortar;
 
-    void Start()
+    private void Start()
     {
-       
+
     }
 
     public IEnumerator SimulateProjectile(Transform Projectile, Transform target)
@@ -22,7 +22,7 @@ public class MortarBullet : MonoBehaviour
         Transform calculateTarget = target.GetChildren("cible");
         Transform Projectil = Instantiate(Projectile.gameObject).transform;
         // Move projectile to the position of throwing object + add some offset if needed.
-        Projectil.position = transform.position + new Vector3(0, 0.0f, 0);
+        Projectil.position = transform.position + new Vector3(0, 0, 0);
 
         // Calculate distance to target
         float target_Distance = Vector3.Distance(Projectil.position, calculateTarget.position);
@@ -50,12 +50,9 @@ public class MortarBullet : MonoBehaviour
 
             yield return null;
         }
-        var a = Instantiate(ExplosionMortar,Projectil.transform.position, new Quaternion(0,0,0,0));
+        GameObject a = Instantiate(ExplosionMortar, Projectil.transform.position, new Quaternion(0, 0, 0, 0));
         Destroy(Projectil.gameObject);
-        a.GetComponent<explosionImpact>().shootedTurret = this.gameObject;
+        a.GetComponent<explosionImpact>().shootedTurret = gameObject;
         Destroy(a, 0.5f);
-        
     }
-
-
 }
