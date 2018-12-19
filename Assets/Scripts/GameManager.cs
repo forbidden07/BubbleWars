@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     #region champs
     private static int _money;
     private static int _hpBase;
+    private GameObject Sun;
     #endregion
 
     #region propriété GameObject/Transform
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     public Transform Depart;
     public GameObject MenuBuyTurret;
     public GameObject SearchPanel;
+
     #endregion
 
     #region propriété Integer
@@ -58,6 +60,7 @@ public class GameManager : MonoBehaviour
     public int tours = 1;
     public int NombreAPop;
     public int BeginHPBase;
+    public float timerSun = 0;
     #endregion
 
     #region propriété Bool
@@ -73,10 +76,13 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         HpBase = BeginHPBase;
-        Money = MoneyBegin; 
+        Money = MoneyBegin;
+        Sun = GameObject.Find("Directional Light");
+        Sun.GetComponent<Light>().color = new Color(1, 0.5f, 0, 1);
     }
     private void Update()
     {
+        RotationSun();
         CameraControle();
         if (HpBase <= 0)
         {
@@ -185,7 +191,28 @@ public class GameManager : MonoBehaviour
             slotSelect.GetComponent<SlotSelection>().MenuBuyTurret.transform.position = Camera.main.WorldToScreenPoint(slotSelect.transform.position) + new Vector3(0, 55, 0);
         }
     }
-    #endregion
+
+    public float otherTimer = 1;
+    public void RotationSun()
+    {
+        timerSun -= Time.deltaTime /2;
+        Sun.transform.rotation = Quaternion.Euler(timerSun - 180, 90, 0);
+        if (timerSun <= 0)
+        {
+            timerSun = 360;
+        }
+        if (timerSun - 160 >= 180 && timerSun - 160 <= 225)
+        {
+            otherTimer -= Time.deltaTime / 45;
+            Sun.GetComponent<Light>().color = Color.Lerp(new Color(0.862f, 0.768f, 0.55f, 1), new Color(1, 0.4f, 0, 1), otherTimer);
+        }
+        if (timerSun - 160 >= 0 && timerSun - 160 <= 45)
+        {
+            otherTimer -= Time.deltaTime / 45;
+            Sun.GetComponent<Light>().color = Color.Lerp(new Color(0.862f, 0.768f, 0.55f, 1), new Color(1, 0.4f, 0, 1), otherTimer);
+        }
+    }
+    #endregion 
 
     #region Methode Button
     // choice of turret.
