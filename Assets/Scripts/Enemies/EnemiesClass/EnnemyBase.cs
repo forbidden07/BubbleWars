@@ -9,7 +9,7 @@ using System;
 public abstract class EnnemyBase : MonoBehaviour
 {
     public bool Slowable;
-    public bool slowed;
+    public bool slowed =  false;
     private bool _ignited;
     public bool Ignited
     {
@@ -100,6 +100,22 @@ public abstract class EnnemyBase : MonoBehaviour
             transform.GetChildren("IgniteParticule").gameObject.SetActive(false);
             
         }
+        yield return null;
+    }
+    public IEnumerator SlowableManagement()
+    {
+        Debug.Log(gameObject.name + " 1");
+        if (Slowable && !slowed)
+        {
+            Debug.Log(gameObject.name + " 2");
+            GetComponent<NavMeshAgent>().speed *= 0.3f;
+            slowed = true;
+        }
+        Debug.Log(gameObject.name + " 3");
+        yield return new WaitForSeconds(3);
+        Debug.Log(gameObject.name + " 4");
+        GetComponent<NavMeshAgent>().speed = EnnemyVitesse;
+        slowed = false;
         yield return null;
     }
 }

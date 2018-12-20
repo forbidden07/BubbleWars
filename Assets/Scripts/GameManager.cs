@@ -203,12 +203,12 @@ public class GameManager : MonoBehaviour
         }
         if (timerSun - 160 >= 180 && timerSun - 160 <= 225)
         {
-            otherTimer -= Time.deltaTime / 45;
-            Sun.GetComponent<Light>().color = Color.Lerp(new Color(0.862f, 0.768f, 0.55f, 1), new Color(1, 0.1f, 0, 1), otherTimer);
+            otherTimer -= Time.deltaTime / 25;
+            Sun.GetComponent<Light>().color = Color.Lerp(new Color(0.862f, 0.768f, 0.55f, 1), new Color(1, 0.4f, 0, 1), otherTimer);
         }
         if (timerSun - 160 >= 0 && timerSun - 160 <= 45)
         {
-            otherTimer -= Time.deltaTime / 45;
+            otherTimer -= Time.deltaTime / 25;
             Sun.GetComponent<Light>().color = Color.Lerp(new Color(0.862f, 0.768f, 0.55f, 1), new Color(1, 0.4f, 0, 1), otherTimer);
         }
     }
