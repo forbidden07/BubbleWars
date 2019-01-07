@@ -23,9 +23,7 @@ public class AcidTurret : TurretBase
     {
         GetComponent<AudioSource>().Play();
         GameObject bulletGO = Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
-        AcideBullet bullet = bulletGO.GetComponent<AcideBullet>();
         bulletGO.GetComponent<AcideBullet>().slowAcide = this.slowPropertion;
-        bullet.Seek(target);
-
+        bulletGO.GetComponent<AcideBullet>().Seek(target);
     }
 }

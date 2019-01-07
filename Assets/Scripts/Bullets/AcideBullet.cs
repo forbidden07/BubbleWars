@@ -6,34 +6,25 @@ public class AcideBullet : BulletBase
 {
     public GameObject PrefabTraineeAcide;
     private GameObject particleTraineeAcide;
-    public GameObject PrefabBalleParticule;
-    private GameObject BalleParticule;
     public float slowAcide;
     public override void Start()
     {
         base.Start();
-        if (PrefabBalleParticule != null)
-        {
-            BalleParticule = Instantiate(PrefabBalleParticule, transform.position, transform.rotation);
-        }
     }
 
     public override void Update()
     {
+        if (!target)
+        {
+            Destroy(gameObject);
+        }
         base.Update();
     }
     public override void HitTarget()
     {
         if (!damageDone)
         {
-            if (PrefabBalleParticule)
-            {
-                Destroy(BalleParticule, 0.5f);
-            }
-            if (PrefabTraineeAcide != null)
-            {
-                particleTraineeAcide = Instantiate(PrefabTraineeAcide, target.transform.position, target.transform.rotation);
-            }
+            particleTraineeAcide = Instantiate(PrefabTraineeAcide, target.transform.position, target.transform.rotation);
             particleTraineeAcide.GetComponent<ParticuleAcideTrain>().target = target.gameObject;
             Destroy(particleTraineeAcide, lifeTime);
         }
@@ -41,7 +32,6 @@ public class AcideBullet : BulletBase
     }
     public override void ChooseAndHit()
     {
-        BalleParticule.transform.position = transform.position;
         base.ChooseAndHit();
     }
 }

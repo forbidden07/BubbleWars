@@ -9,6 +9,10 @@ TagManager:
   - Enemy
   - slot
   - Terrain
+  - Canon
+  - LanceAcide
+  - Mortar
+  - LanceFlamme
   layers:
   - Default
   - TransparentFX

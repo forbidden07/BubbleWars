@@ -175,13 +175,13 @@ public class GameManager : MonoBehaviour
         EndPanel.SetActive(true);
         if (winOrLose)
         {
-            EndPanel.transform.GetChildren("TextVictoryOrDefeat").GetComponent<Text>().text = "Victory";
-            //win
+            EndPanel.transform.GetChildren("TextLevelCompleted").GetComponent<Text>().text = "Victory";
+            GameObject.Find("TextGold").GetComponent<Text>().text = "10";
         }
         else
         {
-            EndPanel.transform.GetChildren("TextVictoryOrDefeat").GetComponent<Text>().text = "Defeat";
-            //lose
+            EndPanel.transform.GetChildren("TextLevelCompleted").GetComponent<Text>().text = "Defeat";
+            GameObject.Find("TextGold").GetComponent<Text>().text = "0";
         }
     }
     public void MenuTurretBuy()
@@ -204,7 +204,7 @@ public class GameManager : MonoBehaviour
         if (timerSun - 160 >= 180 && timerSun - 160 <= 225)
         {
             otherTimer -= Time.deltaTime / 25;
-            Sun.GetComponent<Light>().color = Color.Lerp(new Color(0.862f, 0.768f, 0.55f, 1), new Color(1, 0.4f, 0, 1), otherTimer);
+            Sun.GetComponent<Light>().color = Color.Lerp(new Color(0.9f, 0.9f, 0.9f, 1), new Color(1, 0.3f, 0.3f, 1), otherTimer);
         }
         if (timerSun - 160 >= 0 && timerSun - 160 <= 45)
         {
@@ -222,6 +222,8 @@ public class GameManager : MonoBehaviour
         {
             GameObject turret = Instantiate(SimpleTurret, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.position, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.rotation);
             Money -= 8;
+            turret.GetComponent<BasicTurret>().damage = GetComponent<RechercheManager>().CanonDamage;
+            turret.GetComponent<BasicTurret>().fireRate = GetComponent<RechercheManager>().CanonVitesse;
             AudioManager.myTurrets.Add(turret);
             slotSelect.GetComponent<SlotSelection>().HasTurret = true;
             MenuBuyTurret.SetActive(false);
@@ -233,6 +235,8 @@ public class GameManager : MonoBehaviour
         {
             GameObject turret = Instantiate(AcideTurret, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.position, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.rotation);
             Money -= 15;
+            turret.GetComponent<AcidTurret>().slowPropertion = GetComponent<RechercheManager>().AcideSlowPropertie;
+            turret.GetComponent<AcidTurret>().fireRate = GetComponent<RechercheManager>().AcideVitesse;
             AudioManager.myTurrets.Add(turret);
             slotSelect.GetComponent<SlotSelection>().HasTurret = true;
             MenuBuyTurret.SetActive(false);
@@ -244,6 +248,8 @@ public class GameManager : MonoBehaviour
         {
             GameObject turret = Instantiate(MortierTurret, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.position, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.rotation);
             Money -= 20;
+            turret.GetComponent<MortarTurret>().damage = GetComponent<RechercheManager>().MortierDamage;
+            turret.GetComponent<MortarTurret>().fireRate = GetComponent<RechercheManager>().MortierVitesse;
             AudioManager.myTurrets.Add(turret);
             slotSelect.GetComponent<SlotSelection>().HasTurret = true;
             MenuBuyTurret.SetActive(false);
@@ -255,6 +261,8 @@ public class GameManager : MonoBehaviour
         {
             GameObject turret = Instantiate(FlamerTurret, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.position, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.rotation);
             Money -= 15;
+            turret.GetComponent<FireTurret>().damage = GetComponent<RechercheManager>().FlammeDamage;
+            turret.GetComponent<FireTurret>().fireRate = GetComponent<RechercheManager>().FlammeVitesse;
             AudioManager.myTurrets.Add(turret);
             slotSelect.GetComponent<SlotSelection>().HasTurret = true;
             MenuBuyTurret.SetActive(false);

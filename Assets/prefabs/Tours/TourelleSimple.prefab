@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 135539616926228502}
   m_Layer: 0
   m_Name: TourelleSimple
-  m_TagString: Untagged
+  m_TagString: Canon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

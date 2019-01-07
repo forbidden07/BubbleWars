@@ -19,6 +19,7 @@ public class BasicTurret : TurretBase
 
             flameParticlesPrefab.GetComponent<Light>().range = TempEclair;
         }
+
         base.Update();
     }
     protected override void OnMouseDown()
@@ -29,8 +30,5 @@ public class BasicTurret : TurretBase
     {
         base.Shoot();
         TempEclair = 20;
-        //GameObject a = Instantiate(flameParticlesPrefab, FirePoint);
-        //a.transform.localPosition = FirePoint.localPosition;
-        //Destroy(a, 1);
     }
 }

@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 114552705629631088}
   m_Layer: 0
   m_Name: MortierTurret
-  m_TagString: Untagged
+  m_TagString: Mortar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -404,7 +404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7a6fbfb210bb94c9b309b0cbe007ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PriceTurret: 20
   fireRate: 0.4
   range: 50
   turnSpeed: 5

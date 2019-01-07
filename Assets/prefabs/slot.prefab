@@ -23,13 +23,13 @@ GameObject:
   - component: {fileID: 23964015583116462}
   - component: {fileID: 65984777299121942}
   - component: {fileID: 114771860926294238}
-  - component: {fileID: 54197487632027848}
+  - component: {fileID: 54968078074628516}
   m_Layer: 0
   m_Name: slot
   m_TagString: slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 9
   m_IsActive: 1
 --- !u!1 &1984323346903654
 GameObject:
@@ -44,7 +44,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &4139503324905090
 Transform:
@@ -65,8 +65,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1186218363339150}
-  m_LocalRotation: {x: -0.07966382, y: -0.012419991, z: 0.15206002, w: 0.98507726}
-  m_LocalPosition: {x: 185.87, y: 2.09, z: -209.27}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 228, y: 2.61, z: -275}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children:
   - {fileID: 4139503324905090}
@@ -115,7 +115,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1186218363339150}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54197487632027848
+--- !u!54 &54968078074628516
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 135997329488859620}
   m_Layer: 0
   m_Name: lanceAcide
-  m_TagString: Untagged
+  m_TagString: LanceAcide
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -336,7 +336,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1370599837736064, guid: 655e08a0a57d7a6499e31aff0c5e06e5,
     type: 2}
   PartToRotate: {fileID: 4663452112081184}
-  slowPropertion: 0.8
+  slowPropertion: 0.4
 --- !u!135 &135997329488859620
 SphereCollider:
   m_ObjectHideFlags: 1

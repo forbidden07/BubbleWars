@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 82491101282861754}
   m_Layer: 0
   m_Name: LanceFlame
-  m_TagString: Untagged
+  m_TagString: LanceFlamme
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -491,7 +491,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f8ce155b486464f926db5d1411864e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PriceTurret: 15
   fireRate: 0.5
   range: 10
   turnSpeed: 20

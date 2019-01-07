@@ -1,15 +1,15 @@
-﻿using System.Collections;
+﻿using Nalka.Tools.Unity;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Nalka.Tools.Unity;
 using UnityEngine.AI;
-using System;
 
 public abstract class EnnemyBase : MonoBehaviour
 {
     public bool Slowable;
-    public bool slowed =  false;
+    public bool slowed = false;
     private bool _ignited;
     public bool Ignited
     {
@@ -79,7 +79,7 @@ public abstract class EnnemyBase : MonoBehaviour
             GameManager.Money += earningsOnDestroy;
             Destroy(LifeBar);
             Outils.Destroyed(gameObject, DyingParticule, 1f);
-           // Destroyer.Destroy(gameObject);
+            // Destroyer.Destroy(gameObject);
         }
     }
 
@@ -98,24 +98,41 @@ public abstract class EnnemyBase : MonoBehaviour
                 i++;
             }
             transform.GetChildren("IgniteParticule").gameObject.SetActive(false);
-            
+
         }
         yield return null;
     }
     public IEnumerator SlowableManagement()
     {
-        Debug.Log(gameObject.name + " 1");
         if (Slowable && !slowed)
         {
-            Debug.Log(gameObject.name + " 2");
-            GetComponent<NavMeshAgent>().speed *= 0.3f;
+            GetComponent<NavMeshAgent>().speed *= GameObject.Find("GameManager").GetComponent<RechercheManager>().AcideSlowPropertie;
             slowed = true;
+            yield return new WaitForSeconds(3);
+            try
+            {
+                if (gameObject != null)
+                {
+                    GetComponent<NavMeshAgent>().speed = EnnemyVitesse;
+                    slowed = false;
+                }
+            }
+            catch
+            {
+
+            }
         }
-        Debug.Log(gameObject.name + " 3");
-        yield return new WaitForSeconds(3);
-        Debug.Log(gameObject.name + " 4");
-        GetComponent<NavMeshAgent>().speed = EnnemyVitesse;
-        slowed = false;
+        try
+        {
+        if (gameObject !=null)
+        {
+            GetComponent<NavMeshAgent>().speed = EnnemyVitesse;
+        }
+        }
+        catch (Exception)
+        {
+        }
+
         yield return null;
     }
 }
