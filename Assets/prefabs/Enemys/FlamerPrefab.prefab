@@ -180,7 +180,7 @@ MonoBehaviour:
   EnemyHPMax: 20
   EnnemyVitesse: 25
   slowTimer: 0
-  earningsOnDestroy: 1
+  earningsOnDestroy: 3
   LifeBarPrefab: {fileID: 1577246104111378, guid: 0aaed781e9770594a9889373dd89a04f,
     type: 2}
   DyingParticule: {fileID: 1518363504624638, guid: c668b4653fc3699408f6156526f786c4,

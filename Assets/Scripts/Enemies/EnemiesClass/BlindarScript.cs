@@ -29,7 +29,7 @@ public class BlindarScript : EnnemyBase
     {
 
         base.Start();
-        Slowable = true;
+        Slowable = false;
         Armor = MaxArmor;
         ArmorBar = Instantiate(ArmorBarPrefab, base.canvas.transform);
     }
@@ -46,6 +46,10 @@ public class BlindarScript : EnnemyBase
         }
         base.Update();
         ArmorBarManagment();
+        if (Armor <= 0)
+        {
+            Slowable = true;
+        }
     }
     private void ArmorBarManagment()
     {

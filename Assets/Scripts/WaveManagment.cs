@@ -19,12 +19,15 @@ public class WaveManagment : MonoBehaviour
     private string path;
     private Dictionary<int, GameObject> dico;
     private bool isLastWave;
+    public int NumberWave { get; set; }
 
     //UI
     private Text WaveTimer;
 
     private void Start()
     {
+        GameObject.Find("WaveNumberText").GetComponent<Text>().text = $"Wave {NumberWave}";
+        NumberWave = 0;
         path = string.Format(@"Assets\Scripts\Resources\{0}.txt", SceneManager.GetActiveScene().name);
         WaveTimer = GameObject.Find("WaveTimer").GetComponent<Text>();
         StartCoroutine(Spawn());
@@ -63,15 +66,22 @@ public class WaveManagment : MonoBehaviour
 
     private void SpawnWave(string ennemies)
     {
-        foreach (string enemy in ennemies.Split(';'))
+        NumberWave++;
+        GameObject.Find("WaveNumberText").GetComponent<Text>().text = $"Wave {NumberWave}";
+        foreach (string enemy in ennemies.Split('-'))
         {
             GenererEnnemi(Parse(enemy));
         }
+
     }
 
     private void GenererEnnemi(int numeroEnnemi)
     {
         GameObject a = Instantiate(dico[numeroEnnemi], Parent.position, Parent.rotation);
+        if (a.GetComponent<BasicEnnemy>() || a.GetComponent<BlindarScript>())
+        {
+            a.GetComponent<EnnemyBase>().EnemyHPMax = a.GetComponent<EnnemyBase>().EnemyHPMax + (NumberWave * 3);
+        }
         a.transform.SetParent(Parent);
     }
 

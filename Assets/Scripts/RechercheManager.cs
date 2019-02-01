@@ -30,7 +30,7 @@ public class RechercheManager : MonoBehaviour
     {
         //Canon
         CanonDamageText = GameObject.Find("TextCanonDamage").GetComponent<Text>();
-        CanonDamage = 20;
+        CanonDamage = 30;
         CanonDamageText.text = $"Damage: {CanonDamage}";
         CanonVitesseText = GameObject.Find("TextCanonVitesse").GetComponent<Text>();
         CanonVitesse = 0.8f;
@@ -44,17 +44,17 @@ public class RechercheManager : MonoBehaviour
         AcideDurationText.text = $"Ralentissement: {Mathf.Round(AcideSlowPropertie * 100)}%";
         //Mortier
         MortarDamageText = GameObject.Find("TextMortarDamage").GetComponent<Text>();
-        MortierDamage = 20;
+        MortierDamage = 15;
         MortarDamageText.text = $"Damage: {MortierDamage}";
         MortarVitesseText = GameObject.Find("TextMortarVitesse").GetComponent<Text>();
-        MortierVitesse = 0.4f;
+        MortierVitesse = 0.6f;
         MortarVitesseText.text = $"Vitesse d'attaque: {MortierVitesse}";
         //Flame
         FlammeDamageText = GameObject.Find("TextDamageFlamme").GetComponent<Text>();
-        FlammeDamage = 8;
+        FlammeDamage = 7;
         FlammeDamageText.text = $"Damage: {FlammeDamage}";
         FlammeVitesseText = GameObject.Find("TextVitesseFlamme").GetComponent<Text>();
-        FlammeVitesse = 0.5f;
+        FlammeVitesse = 0.4f;
         FlammeVitesseText.text = $"Vitesse d'attaque: {FlammeVitesse}";
 
         GameObject.Find("RecherchePanel").SetActive(false);
@@ -131,7 +131,7 @@ public class RechercheManager : MonoBehaviour
         {
             item.GetComponent<MortarTurret>().damage += 10;
         }
-        MortierDamage += 10;
+        MortierDamage += 15;
         MortarDamageText.text = $"Damage: {MortierDamage}";
     }
     public void VitesseRechercheMortier()

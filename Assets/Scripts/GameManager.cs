@@ -27,11 +27,12 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region propriété Integer
-    // public static int TurretPrice
-    //{
-    //get { return TurretOnBuy.GetComponent<TurretBase>().TurretPrice; }
-    // set { TurretOnBuy.GetComponent<TurretBase>().TurretPrice = value; }
-    //}
+
+    [HideInInspector] public int turretPriceBasic;
+    [HideInInspector] public int turretPriceFlame;
+    [HideInInspector] public int turretPriceAcide;
+    [HideInInspector] public int turretPriceMortar;
+
     public static int Money
     {
         get
@@ -79,7 +80,12 @@ public class GameManager : MonoBehaviour
         Money = MoneyBegin;
         Sun = GameObject.Find("Directional Light");
         Sun.GetComponent<Light>().color = new Color(1, 0.5f, 0, 1);
+        turretPriceBasic = 20;
+        turretPriceFlame = 30;
+        turretPriceAcide = 25;
+        turretPriceMortar = 30;
     }
+
     private void Update()
     {
         RotationSun();
@@ -195,8 +201,8 @@ public class GameManager : MonoBehaviour
     public float otherTimer = 1;
     public void RotationSun()
     {
-        timerSun -= Time.deltaTime /2;
-        Sun.transform.rotation = Quaternion.Euler(timerSun - 180, 90, 0);
+        timerSun -= Time.deltaTime / 2;
+        Sun.transform.rotation = Quaternion.Euler(timerSun - 190, 90, 0);
         if (timerSun <= 0)
         {
             timerSun = 360;
@@ -218,10 +224,10 @@ public class GameManager : MonoBehaviour
     // choice of turret.
     public void ChoixTurretSimple()
     {
-        if (Money >= 8 && slotSelect.GetComponent<SlotSelection>().HasTurret == false)
+        if (Money >= turretPriceBasic && slotSelect.GetComponent<SlotSelection>().HasTurret == false)
         {
             GameObject turret = Instantiate(SimpleTurret, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.position, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.rotation);
-            Money -= 8;
+            Money -= turretPriceBasic;
             turret.GetComponent<BasicTurret>().damage = GetComponent<RechercheManager>().CanonDamage;
             turret.GetComponent<BasicTurret>().fireRate = GetComponent<RechercheManager>().CanonVitesse;
             AudioManager.myTurrets.Add(turret);
@@ -231,10 +237,10 @@ public class GameManager : MonoBehaviour
     }
     public void ChoixTurretAcide()
     {
-        if (Money >= 15 && slotSelect.GetComponent<SlotSelection>().HasTurret == false)
+        if (Money >= turretPriceAcide && slotSelect.GetComponent<SlotSelection>().HasTurret == false)
         {
             GameObject turret = Instantiate(AcideTurret, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.position, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.rotation);
-            Money -= 15;
+            Money -= turretPriceAcide;
             turret.GetComponent<AcidTurret>().slowPropertion = GetComponent<RechercheManager>().AcideSlowPropertie;
             turret.GetComponent<AcidTurret>().fireRate = GetComponent<RechercheManager>().AcideVitesse;
             AudioManager.myTurrets.Add(turret);
@@ -244,10 +250,10 @@ public class GameManager : MonoBehaviour
     }
     public void ChoixTurretMortier()
     {
-        if (Money >= 20 && slotSelect.GetComponent<SlotSelection>().HasTurret == false)
+        if (Money >= turretPriceMortar && slotSelect.GetComponent<SlotSelection>().HasTurret == false)
         {
             GameObject turret = Instantiate(MortierTurret, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.position, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.rotation);
-            Money -= 20;
+            Money -= turretPriceMortar;
             turret.GetComponent<MortarTurret>().damage = GetComponent<RechercheManager>().MortierDamage;
             turret.GetComponent<MortarTurret>().fireRate = GetComponent<RechercheManager>().MortierVitesse;
             AudioManager.myTurrets.Add(turret);
@@ -257,10 +263,10 @@ public class GameManager : MonoBehaviour
     }
     public void ChoixTurretFlamer()
     {
-        if (Money >= 15 && slotSelect.GetComponent<SlotSelection>().HasTurret == false)
+        if (Money >= turretPriceFlame && slotSelect.GetComponent<SlotSelection>().HasTurret == false)
         {
             GameObject turret = Instantiate(FlamerTurret, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.position, slotSelect.GetComponent<SlotSelection>().turretPlace.transform.rotation);
-            Money -= 15;
+            Money -= turretPriceFlame;
             turret.GetComponent<FireTurret>().damage = GetComponent<RechercheManager>().FlammeDamage;
             turret.GetComponent<FireTurret>().fireRate = GetComponent<RechercheManager>().FlammeVitesse;
             AudioManager.myTurrets.Add(turret);

@@ -61,11 +61,6 @@ public abstract class EnnemyBase : MonoBehaviour
         EnemyHP = EnemyHPMax;
     }
 
-    //private void InstantiateOnDestroy(ObjectDestroyedEventArgs<EnnemyBase> obj)
-    //{
-    //    Destroyer.Destroy(Instantiate(DyingParticule, transform.position, transform.rotation), 1);
-    //}
-
     protected virtual void Update()
     {
         HealhBarManagment();
@@ -94,7 +89,7 @@ public abstract class EnnemyBase : MonoBehaviour
             while (i < 4)
             {
                 yield return new WaitForSeconds(1);
-                EnemyHP -= 5;
+                EnemyHP -= GameObject.Find("GameManager").GetComponent<RechercheManager>().FlammeDamage;
                 i++;
             }
             transform.GetChildren("IgniteParticule").gameObject.SetActive(false);
@@ -111,28 +106,22 @@ public abstract class EnnemyBase : MonoBehaviour
             yield return new WaitForSeconds(3);
             try
             {
-                if (gameObject != null)
+                if (!gameObject)
+                {
+                    StopCoroutine(SlowableManagement());
+                }
+                else
                 {
                     GetComponent<NavMeshAgent>().speed = EnnemyVitesse;
                     slowed = false;
+                    StopCoroutine(SlowableManagement());
                 }
             }
-            catch
+            catch (Exception)
             {
-
             }
         }
-        try
-        {
-        if (gameObject !=null)
-        {
-            GetComponent<NavMeshAgent>().speed = EnnemyVitesse;
-        }
-        }
-        catch (Exception)
-        {
-        }
-
+        StopCoroutine(SlowableManagement());
         yield return null;
     }
 }

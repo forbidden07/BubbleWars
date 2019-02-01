@@ -53,6 +53,7 @@ public class MortarBullet : MonoBehaviour
         GameObject a = Instantiate(ExplosionMortar, Projectil.transform.position, new Quaternion(0, 0, 0, 0));
         Destroy(Projectil.gameObject);
         a.GetComponent<explosionImpact>().shootedTurret = gameObject;
-        Destroy(a, 0.5f);
+        Destroy(a.GetComponent<Collider>(), 0.1f);
+        Destroy(a, 1f);
     }
 }

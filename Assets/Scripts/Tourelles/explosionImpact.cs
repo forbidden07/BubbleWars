@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class explosionImpact : MonoBehaviour
@@ -19,19 +20,10 @@ public class explosionImpact : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        try
+        if (!ImpactenemyList.Contains(other.gameObject) && other && other.tag == "Enemy")
         {
-            if (!ImpactenemyList.Contains(other.gameObject) && other)
-            {
-                other.GetComponent<EnnemyBase>().EnemyHP -= shootedTurret.GetComponent<TurretBase>().damage;
-                ImpactenemyList.Add(other.gameObject);
-            }
+            other.GetComponent<EnnemyBase>().EnemyHP -= shootedTurret.GetComponent<TurretBase>().damage;
+            ImpactenemyList.Add(other.gameObject);
         }
-        catch (System.Exception)
-        {
-
-        }
-
-
     }
 }
